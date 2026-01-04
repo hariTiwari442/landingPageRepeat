@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repeatly - YouTube Video Looper</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
+        line-height: 1.6;
+        color: #e0e0e0;
+        overflow-x: hidden;
+        background: #0a0a0a;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 15, 15, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #ff6b6b;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #e0e0e0;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #ff6b6b;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 2rem 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Animated gradient background */
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 107, 107, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(81, 207, 102, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 60% 20%,
+            rgba(255, 107, 107, 0.08) 0%,
+            transparent 50%
+          );
+        animation: gradientShift 10s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.1) rotate(5deg);
+        }
+      }
+
+      /* Floating particles */
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            2px 2px at 20% 30%,
+            rgba(255, 107, 107, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 60% 70%,
+            rgba(81, 207, 102, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 50% 50%,
+            rgba(255, 107, 107, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 80% 10%,
+            rgba(255, 107, 107, 0.3),
+            transparent
+          ),
+          radial-gradient(
+            2px 2px at 90% 60%,
+            rgba(81, 207, 102, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 33% 80%,
+            rgba(255, 107, 107, 0.2),
+            transparent
+          ),
+          radial-gradient(
+            1px 1px at 15% 90%,
+            rgba(81, 207, 102, 0.2),
+            transparent
+          );
+        background-size: 200% 200%;
+        animation: particles 20s linear infinite;
+      }
+
+      @keyframes particles {
+        0% {
+          background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+        }
+        100% {
+          background-position: 200% 200%, -200% -200%, 100% -100%, -100% 100%,
+            150% -150%, -150% 150%, 100% 100%;
+        }
+      }
+
+      /* Glowing orbs */
+      .glow-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: float 6s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .glow-orb-1 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 107, 107, 0.4) 0%,
+          transparent 70%
+        );
+        top: -100px;
+        right: 10%;
+        animation-delay: 0s;
+      }
+
+      .glow-orb-2 {
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(81, 207, 102, 0.3) 0%,
+          transparent 70%
+        );
+        bottom: 100px;
+        left: 5%;
+        animation-delay: 2s;
+      }
+
+      .glow-orb-3 {
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 107, 107, 0.3) 0%,
+          transparent 70%
+        );
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+        }
+        33% {
+          transform: translateY(-30px) translateX(20px);
+        }
+        66% {
+          transform: translateY(20px) translateX(-20px);
+        }
+      }
+
+      .hero-content {
+        max-width: 1200px;
+        text-align: center;
+        z-index: 10;
+        position: relative;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        text-shadow: 0 0 20px rgba(255, 107, 107, 0.5),
+          0 0 40px rgba(255, 107, 107, 0.3), 0 0 60px rgba(255, 107, 107, 0.2);
+        animation: fadeInUp 1s ease-out, textGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes textGlow {
+        0%,
+        100% {
+          text-shadow: 0 0 20px rgba(255, 107, 107, 0.5),
+            0 0 40px rgba(255, 107, 107, 0.3), 0 0 60px rgba(255, 107, 107, 0.2);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(255, 107, 107, 0.8),
+            0 0 50px rgba(255, 107, 107, 0.5), 0 0 80px rgba(255, 107, 107, 0.3);
+        }
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: #999;
+        animation: fadeInUp 1s ease-out 0.2s backwards;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 1rem 3rem;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s;
+        animation: fadeInUp 1s ease-out 0.4s backwards,
+          pulse 2s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .cta-button:hover::before {
+        left: 100%;
+      }
+
+      .cta-button:hover {
+        background: linear-gradient(135deg, #ff5252 0%, #ff3838 100%);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5),
+          0 0 50px rgba(255, 107, 107, 0.3);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(255, 107, 107, 0.6);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Features Section */
+      .features {
+        padding: 6rem 2rem;
+        background: #0a0a0a;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .features-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        padding: 2.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        text-align: center;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(255, 107, 107, 0.2);
+        border-color: rgba(255, 107, 107, 0.4);
+      }
+
+      .feature-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      .feature-card p {
+        color: #999;
+        line-height: 1.8;
+      }
+
+      /* How It Works */
+      .how-it-works {
+        padding: 6rem 2rem;
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      }
+
+      .steps {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        margin-bottom: 4rem;
+      }
+
+      .step:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .step-number {
+        font-size: 5rem;
+        font-weight: 700;
+        color: #ff6b6b;
+        opacity: 0.3;
+        min-width: 100px;
+      }
+
+      .step-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
+
+      .step-content p {
+        color: #999;
+        font-size: 1.1rem;
+      }
+
+      /* Info Section */
+      .info {
+        padding: 6rem 2rem;
+        background: #0a0a0a;
+      }
+
+      .info-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .info h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .info > p {
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #999;
+        margin-bottom: 3rem;
+      }
+
+      .info-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .info-item {
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s, border-color 0.3s;
+      }
+
+      .info-item:hover {
+        transform: translateX(10px);
+        border-color: rgba(255, 107, 107, 0.4);
+      }
+
+      .info-item h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .info-item p {
+        line-height: 1.8;
+        color: #999;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 6rem 2rem;
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      }
+
+      .contact-content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .contact-form {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 3rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 2rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #e0e0e0;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: inherit;
+        color: #e0e0e0;
+        transition: border-color 0.3s, background 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #ff6b6b;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 1rem;
+        background: #ff6b6b;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s;
+      }
+
+      .submit-button:hover {
+        background: #ff5252;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+      }
+
+      .contact-info {
+        margin-top: 3rem;
+        text-align: center;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+        font-size: 1.1rem;
+        color: #999;
+      }
+
+      /* Footer */
+      footer {
+        background: #0a0a0a;
+        color: #999;
+        padding: 3rem 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-content .logo {
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .social-links a {
+        color: #999;
+        font-size: 2rem;
+        transition: transform 0.3s, color 0.3s;
+      }
+
+      .social-links a:hover {
+        transform: translateY(-5px);
+        color: #ff6b6b;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        display: none;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: #e0e0e0;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .step {
+          flex-direction: column !important;
+          text-align: center;
+        }
+
+        .step-number {
+          min-width: auto;
+        }
+      }
+
+      /* Smooth Scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #ff6b6b;
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #ff5252;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo">⟲ Repeatly</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#info">Info</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn">☰</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="glow-orb glow-orb-1"></div>
+      <div class="glow-orb glow-orb-2"></div>
+      <div class="glow-orb glow-orb-3"></div>
+      <div class="hero-content">
+        <h1>Loop YouTube Videos Like a Pro</h1>
+        <p>Master any skill by repeating video sections effortlessly</p>
+        <a href="#features" class="cta-button">Get Started</a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2 class="section-title">Powerful Features</h2>
+      <p class="section-subtitle">
+        Everything you need to loop videos perfectly
+      </p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3>Precise Time Control</h3>
+          <p>
+            Set exact start and end points with precision timing. Perfect for
+            learning specific sections of tutorials, music, or dance videos.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔢</div>
+          <h3>Loop Counter</h3>
+          <p>
+            Set how many times you want to repeat a section, or loop infinitely.
+            Track your progress with our built-in counter.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⌨️</div>
+          <h3>Keyboard Shortcuts</h3>
+          <p>
+            Control everything without touching your mouse. Ctrl+Shift+S for
+            start, Ctrl+Shift+E for end, Ctrl+Shift+L to toggle loop.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Visual Timeline</h3>
+          <p>
+            See exactly which section is looping with our beautiful green
+            indicator and red shadows on the YouTube timeline.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📌</div>
+          <h3>Pinnable Window</h3>
+          <p>
+            Pin the control panel to keep it always visible while you watch and
+            learn. Perfect for multitasking.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Manual Input</h3>
+          <p>
+            Type exact timestamps manually or click to set points. Flexible
+            input methods for maximum control.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Get looping in 3 simple steps</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Install the Extension</h3>
+            <p>
+              Add Repeatly to your Chrome browser with one click. It's
+              completely free and takes seconds to install.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Set Your Loop Points</h3>
+            <p>
+              While watching any YouTube video, click the extension icon and set
+              your start and end points. Use keyboard shortcuts or click
+              buttons.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Start Looping</h3>
+            <p>
+              Hit the loop button and watch as the video automatically repeats
+              your selected section. Perfect for learning!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info" class="info">
+      <div class="info-content">
+        <h2 class="section-title">About Repeatly</h2>
+        <p>
+          Repeatly is a powerful YouTube video looper designed for learners,
+          musicians, dancers, and anyone who needs to master content through
+          repetition. Whether you're learning a guitar solo, perfecting dance
+          moves, or studying complex tutorials, Repeatly makes it effortless.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <h3>🎓 Perfect for Learning</h3>
+            <p>
+              Ideal for musicians learning songs, dancers perfecting
+              choreography, language learners practicing pronunciation, and
+              students studying educational content.
+            </p>
+          </div>
+          <div class="info-item">
+            <h3>🔒 Privacy First</h3>
+            <p>
+              All your loop settings are stored locally on your device. We don't
+              collect, track, or store any of your data on our servers.
+            </p>
+          </div>
+          <div class="info-item">
+            <h3>⚡ Lightweight & Fast</h3>
+            <p>
+              Minimal impact on browser performance. Repeatly runs smoothly in
+              the background and only activates when you need it.
+            </p>
+          </div>
+          <div class="info-item">
+            <h3>🆓 Completely Free</h3>
+            <p>
+              No hidden costs, no premium features locked behind paywalls.
+              Everything you see is yours to use, forever.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">
+        Have questions or feedback? We'd love to hear from you!
+      </p>
+      <div class="contact-content">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            <span>support@repeatly.com</span>
+          </div>
+          <div class="contact-item">
+            <span>🐦</span>
+            <span>@repeatly</span>
+          </div>
+          <div class="contact-item">
+            <span>💬</span>
+            <span>Join our Discord community</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="logo">⟲ Repeatly</div>
+        <p>Loop YouTube videos like never before</p>
+        <div class="social-links">
+          <a href="#" title="Twitter">🐦</a>
+          <a href="#" title="GitHub">💻</a>
+          <a href="#" title="Discord">💬</a>
+        </div>
+        <p>&copy; 2024 Repeatly. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your message! We'll get back to you soon.");
+          this.reset();
+        });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Mobile menu toggle
+      document
+        .querySelector(".mobile-menu-btn")
+        .addEventListener("click", function () {
+          const navLinks = document.querySelector(".nav-links");
+          if (navLinks.style.display === "flex") {
+            navLinks.style.display = "none";
+          } else {
+            navLinks.style.display = "flex";
+            navLinks.style.flexDirection = "column";
+            navLinks.style.position = "absolute";
+            navLinks.style.top = "100%";
+            navLinks.style.left = "0";
+            navLinks.style.right = "0";
+            navLinks.style.background = "rgba(15, 15, 15, 0.98)";
+            navLinks.style.padding = "1rem";
+            navLinks.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
+          }
+        });
+    </script>
+  </body>
+</html>
