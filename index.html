@@ -1,9 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Repeatly - YouTube Video Looper</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⟲</text></svg>"
+    />
     <style>
       * {
         margin: 0;
@@ -12,8 +16,9 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          sans-serif;
         line-height: 1.6;
         color: #e0e0e0;
         overflow-x: hidden;
@@ -86,7 +91,8 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background: radial-gradient(
+        background:
+          radial-gradient(
             circle at 20% 50%,
             rgba(255, 107, 107, 0.15) 0%,
             transparent 50%
@@ -122,7 +128,8 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-image: radial-gradient(
+        background-image:
+          radial-gradient(
             2px 2px at 20% 30%,
             rgba(255, 107, 107, 0.3),
             transparent
@@ -163,11 +170,24 @@
 
       @keyframes particles {
         0% {
-          background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+          background-position:
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%,
+            0% 0%;
         }
         100% {
-          background-position: 200% 200%, -200% -200%, 100% -100%, -100% 100%,
-            150% -150%, -150% 150%, 100% 100%;
+          background-position:
+            200% 200%,
+            -200% -200%,
+            100% -100%,
+            -100% 100%,
+            150% -150%,
+            -150% 150%,
+            100% 100%;
         }
       }
 
@@ -244,20 +264,28 @@
         font-size: 4rem;
         margin-bottom: 1rem;
         color: #ffffff;
-        text-shadow: 0 0 20px rgba(255, 107, 107, 0.5),
-          0 0 40px rgba(255, 107, 107, 0.3), 0 0 60px rgba(255, 107, 107, 0.2);
-        animation: fadeInUp 1s ease-out, textGlow 3s ease-in-out infinite;
+        text-shadow:
+          0 0 20px rgba(255, 107, 107, 0.5),
+          0 0 40px rgba(255, 107, 107, 0.3),
+          0 0 60px rgba(255, 107, 107, 0.2);
+        animation:
+          fadeInUp 1s ease-out,
+          textGlow 3s ease-in-out infinite;
       }
 
       @keyframes textGlow {
         0%,
         100% {
-          text-shadow: 0 0 20px rgba(255, 107, 107, 0.5),
-            0 0 40px rgba(255, 107, 107, 0.3), 0 0 60px rgba(255, 107, 107, 0.2);
+          text-shadow:
+            0 0 20px rgba(255, 107, 107, 0.5),
+            0 0 40px rgba(255, 107, 107, 0.3),
+            0 0 60px rgba(255, 107, 107, 0.2);
         }
         50% {
-          text-shadow: 0 0 30px rgba(255, 107, 107, 0.8),
-            0 0 50px rgba(255, 107, 107, 0.5), 0 0 80px rgba(255, 107, 107, 0.3);
+          text-shadow:
+            0 0 30px rgba(255, 107, 107, 0.8),
+            0 0 50px rgba(255, 107, 107, 0.5),
+            0 0 80px rgba(255, 107, 107, 0.3);
         }
       }
 
@@ -280,7 +308,8 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
         transition: all 0.3s;
-        animation: fadeInUp 1s ease-out 0.4s backwards,
+        animation:
+          fadeInUp 1s ease-out 0.4s backwards,
           pulse 2s ease-in-out infinite;
         position: relative;
         overflow: hidden;
@@ -309,8 +338,50 @@
       .cta-button:hover {
         background: linear-gradient(135deg, #ff5252 0%, #ff3838 100%);
         transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5),
+        box-shadow:
+          0 10px 30px rgba(255, 107, 107, 0.5),
           0 0 50px rgba(255, 107, 107, 0.3);
+      }
+
+      .cta-button,
+      .chrome-store-btn {
+        display: inline-block;
+        padding: 1rem 3rem;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s;
+        animation:
+          fadeInUp 1s ease-out 0.4s backwards,
+          pulse 2s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .chrome-store-btn {
+        background: linear-gradient(135deg, #4285f4 0%, #2563eb 100%);
+        margin-left: 1rem;
+      }
+
+      .chrome-store-btn:hover {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow:
+          0 10px 30px rgba(66, 133, 244, 0.5),
+          0 0 50px rgba(66, 133, 244, 0.3);
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
       }
 
       @keyframes pulse {
@@ -369,7 +440,10 @@
         padding: 2.5rem;
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
         text-align: center;
       }
 
@@ -473,7 +547,9 @@
         padding: 2rem;
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: transform 0.3s, border-color 0.3s;
+        transition:
+          transform 0.3s,
+          border-color 0.3s;
       }
 
       .info-item:hover {
@@ -537,7 +613,9 @@
         font-size: 1rem;
         font-family: inherit;
         color: #e0e0e0;
-        transition: border-color 0.3s, background 0.3s;
+        transition:
+          border-color 0.3s,
+          background 0.3s;
       }
 
       .form-group input:focus,
@@ -617,7 +695,9 @@
       .social-links a {
         color: #999;
         font-size: 2rem;
-        transition: transform 0.3s, color 0.3s;
+        transition:
+          transform 0.3s,
+          color 0.3s;
       }
 
       .social-links a:hover {
@@ -714,7 +794,16 @@
       <div class="hero-content">
         <h1>Loop YouTube Videos Like a Pro</h1>
         <p>Master any skill by repeating video sections effortlessly</p>
-        <a href="#features" class="cta-button">Get Started</a>
+        <div class="cta-buttons">
+          <a href="#features" class="cta-button">Get Started</a>
+          <a
+            href="https://chromewebstore.google.com/detail/repeatly/mkpbpfhechamkebkgpdcfnkhfghdhgea?authuser=0&hl=en-GB"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="chrome-store-btn"
+            >Add to Chrome</a
+          >
+        </div>
       </div>
     </section>
 
@@ -777,6 +866,7 @@
     </section>
 
     <!-- How It Works -->
+    Edit this section ```html
     <section id="how-it-works" class="how-it-works">
       <h2 class="section-title">How It Works</h2>
       <p class="section-subtitle">Get looping in 3 simple steps</p>
@@ -814,6 +904,7 @@
         </div>
       </div>
     </section>
+    ```
 
     <!-- Info Section -->
     <section id="info" class="info">
@@ -867,7 +958,11 @@
         Have questions or feedback? We'd love to hear from you!
       </p>
       <div class="contact-content">
-        <form class="contact-form" id="contactForm">
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xdaazdog"
+          method="POST"
+        >
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
@@ -882,13 +977,6 @@
           </div>
           <button type="submit" class="submit-button">Send Message</button>
         </form>
-
-        <div class="contact-info">
-          <div class="contact-item">
-            <span>📧</span>
-            <span>repeatly16@gmail.com</span>
-          </div>
-        </div>
       </div>
     </section>
 
