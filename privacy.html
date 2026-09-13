@@ -105,7 +105,7 @@
 
     <div class="container">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: July 3, 2026</p>
+      <p class="updated">Last updated: September 13, 2026</p>
 
       <p>
         Repeatly is a Chrome extension built by an indie developer. Your privacy matters.
@@ -115,10 +115,11 @@
 
       <div class="callout">
         <p>
-          <strong>Short version:</strong> Repeatly collects anonymous usage statistics
-          only. No personal information, no video URLs, no browsing history, no ads,
-          no tracking across sites. Everything is stored locally in your browser
-          except a few anonymous product events.
+          <strong>Short version:</strong> Repeatly collects anonymous usage statistics —
+          including the title of the YouTube video you're looping (so we can understand
+          whether users are learners, musicians, students, etc.). No URLs, no personal
+          information, no browsing history, no ads, no cross-site tracking. Everything
+          else is stored locally in your browser.
         </p>
       </div>
 
@@ -132,18 +133,27 @@
       <ul>
         <li>
           <strong>Session start</strong> — a count of how often Repeatly is used, without
-          any identifying information about you or the video you're watching.
+          any identifying information about you.
         </li>
         <li>
           <strong>Feature usage counts</strong> — anonymous counts of interactions like
-          opening the panel, starting a loop, adding a segment, changing playback speed,
-          or clicking the feedback button.
+          opening the panel, starting a loop, changing playback speed, or clicking
+          the rate button.
         </li>
         <li>
           <strong>Loop metadata</strong> — the <em>type</em> of loop you started
-          (single segment, multi-segment chain, or full-video repeat), the number of
-          segments used, and the playback speed. This does <strong>not</strong> include
-          any actual timestamps, video URLs, or content.
+          (single segment or full-video repeat), the repeat count, playback speed,
+          the duration of the video, and the duration of the segment you're looping.
+        </li>
+        <li>
+          <strong>Video title (starting v3.1)</strong> — when you start a loop, we
+          record the <em>title</em> of the YouTube video you're looping (up to 200
+          characters). We use this to understand what kind of content our users find
+          valuable to loop — music, tutorials, language content, lectures, etc. This
+          helps us improve the extension for the people who actually use it.
+          <br /><br />
+          We do <strong>not</strong> record the video URL, video ID, channel name,
+          your identity, or anything else about the video beyond its title.
         </li>
         <li>
           <strong>Anonymous session identifier</strong> — a randomly generated string
@@ -156,8 +166,9 @@
       <ul>
         <li>Your name, email address, or account information</li>
         <li>URLs of YouTube videos you watch</li>
-        <li>Titles, content, or metadata of any video</li>
-        <li>Specific timestamps you loop, start, or end</li>
+        <li>Video IDs, channel names, descriptions, comments, or transcripts</li>
+        <li>Videos you watch <em>without</em> starting a loop (we only record title at the moment you hit Start Loop)</li>
+        <li>Specific timestamps of your start/end points</li>
         <li>IP addresses or precise location</li>
         <li>Browsing history or other websites you visit</li>
         <li>Passwords, financial details, or authentication tokens</li>
