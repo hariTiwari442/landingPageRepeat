@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://haritiwari442.github.io/landingPageRepeat/sitemap.xml
+Sitemap: https://repeatlyextension.netlify.app/sitemap.xml
