@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy — Repeatly YouTube Looper</title>
-    <meta name="description" content="Repeatly's privacy policy. What data we collect (anonymous usage only), what we don't collect, and how it's used." />
+    <title>Privacy Policy — Repeatly for YouTube</title>
+    <meta name="description" content="Repeatly's privacy policy. What data we collect (anonymous usage counts only), what we never collect, and how your saved loops stay on your device." />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://haritiwari442.github.io/landingPageRepeat/privacy.html" />
 
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -105,7 +106,7 @@
 
     <div class="container">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: September 13, 2026</p>
+      <p class="updated">Last updated: October 13, 2026</p>
 
       <p>
         Repeatly is a Chrome extension built by an indie developer. Your privacy matters.
@@ -116,10 +117,10 @@
       <div class="callout">
         <p>
           <strong>Short version:</strong> Repeatly collects anonymous usage statistics —
-          including the title of the YouTube video you're looping (so we can understand
-          whether users are learners, musicians, students, etc.). No URLs, no personal
-          information, no browsing history, no ads, no cross-site tracking. Everything
-          else is stored locally in your browser.
+          counts and durations only, never video titles, URLs, or browsing history. No
+          personal information, no ads, no cross-site tracking. Everything else — including
+          the titles of videos you choose to save to your personal library — is stored
+          locally on your device and never transmitted anywhere.
         </p>
       </div>
 
@@ -137,23 +138,14 @@
         </li>
         <li>
           <strong>Feature usage counts</strong> — anonymous counts of interactions like
-          opening the panel, starting a loop, changing playback speed, or clicking
-          the rate button.
+          opening the panel, starting a loop, changing playback speed, saving a loop to
+          your library, or clicking the rate button.
         </li>
         <li>
           <strong>Loop metadata</strong> — the <em>type</em> of loop you started
           (single segment or full-video repeat), the repeat count, playback speed,
           the duration of the video, and the duration of the segment you're looping.
-        </li>
-        <li>
-          <strong>Video title (starting v3.1)</strong> — when you start a loop, we
-          record the <em>title</em> of the YouTube video you're looping (up to 200
-          characters). We use this to understand what kind of content our users find
-          valuable to loop — music, tutorials, language content, lectures, etc. This
-          helps us improve the extension for the people who actually use it.
-          <br /><br />
-          We do <strong>not</strong> record the video URL, video ID, channel name,
-          your identity, or anything else about the video beyond its title.
+          This is numeric data only — no titles, URLs, or identifying details.
         </li>
         <li>
           <strong>Anonymous session identifier</strong> — a randomly generated string
@@ -166,8 +158,8 @@
       <ul>
         <li>Your name, email address, or account information</li>
         <li>URLs of YouTube videos you watch</li>
-        <li>Video IDs, channel names, descriptions, comments, or transcripts</li>
-        <li>Videos you watch <em>without</em> starting a loop (we only record title at the moment you hit Start Loop)</li>
+        <li>Titles, video IDs, channel names, descriptions, comments, or transcripts</li>
+        <li>Your browsing or watch history</li>
         <li>Specific timestamps of your start/end points</li>
         <li>IP addresses or precise location</li>
         <li>Browsing history or other websites you visit</li>
@@ -178,12 +170,18 @@
       <h2>What is stored locally in your browser</h2>
       <p>
         Repeatly saves the following data using Chrome's local storage API. This data
-        <strong>never leaves your browser</strong> and is only used to make the
-        extension work smoothly for you:
+        <strong>never leaves your browser</strong>, is never sent to us or any third party,
+        and is only used to make the extension work smoothly for you:
       </p>
       <ul>
         <li>Loop settings per video (start/end times, segment configuration, repeat count)</li>
         <li>Whether your loop was active when you last closed the panel</li>
+        <li>
+          <strong>Your saved loops library ("My Loops")</strong> — if you choose to save a
+          loop, we store the video's title and ID along with your start/end times, entirely
+          on your device, so you can find and revisit it later. This never leaves your
+          browser and is never sent to us.
+        </li>
         <li>Anonymous session identifier</li>
       </ul>
       <p>

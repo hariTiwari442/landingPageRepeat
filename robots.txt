@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haritiwari442.github.io/landingPageRepeat/sitemap.xml

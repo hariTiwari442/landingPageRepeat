@@ -3,35 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Repeatly — Loop YouTube Videos & Segments | Free Chrome Extension</title>
+    <title>Repeatly — Loop, Speed Control & Save YouTube Videos | Free Chrome Extension</title>
 
-    <!-- SEO -->
+    <!-- ══════════════ SEO ══════════════ -->
     <meta
       name="description"
-      content="Free Chrome extension to loop any part of a YouTube video. Set custom start/end times, chain multiple segments in sequence, control playback speed. Perfect for music practice, language learning, and focused study."
+      content="Free Chrome extension to loop, speed-control, and save your favorite YouTube moments. Custom start/end times, 0.5×–2× playback speed, and a personal clip library. No sign-up, no ads."
     />
     <meta
       name="keywords"
-      content="loop youtube video, youtube looper, ab repeat youtube, loop segment youtube, youtube repeat, music practice youtube, language learning youtube, chrome extension"
+      content="loop youtube video, youtube playback speed, youtube speed control, youtube looper, ab repeat youtube, save youtube clips, bookmark youtube video, youtube repeat extension, music practice youtube, language learning youtube, chrome extension"
     />
     <meta name="author" content="Harry" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://haritiwari442.github.io/landingPageRepeat/" />
+
+    <!-- Google Search Console site verification —
+         replace CONTENT_VALUE with the code Search Console gives you under
+         Settings → Ownership verification → HTML tag, then keep this tag
+         on the live page permanently (don't remove after verifying). -->
+    <meta name="google-site-verification" content="REPLACE_WITH_YOUR_VERIFICATION_CODE" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Repeatly — Loop YouTube Videos & Segments" />
+    <meta property="og:title" content="Repeatly — Loop, Speed Control & Save YouTube Videos" />
     <meta
       property="og:description"
-      content="Free Chrome extension to loop any part of a YouTube video. Chain multiple segments. Perfect for music, learning, focus."
+      content="Free Chrome extension to loop, speed-control, and save your favorite YouTube moments. Custom start/end times, 0.5×–2× speed, personal clip library."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://haritiwari442.github.io/landingPageRepeat/" />
+    <meta property="og:site_name" content="Repeatly" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Repeatly — Loop YouTube Videos & Segments" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Repeatly — Loop, Speed Control & Save YouTube Videos" />
     <meta
       name="twitter:description"
-      content="Loop any part of a YouTube video. Free Chrome extension for musicians, language learners, and focused minds."
+      content="Loop any part of a YouTube video, control playback speed, and save your favorites. Free Chrome extension, no sign-up."
     />
 
     <!-- Structured data -->
@@ -39,7 +48,7 @@
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Repeatly – YouTube Looper & AB Repeat",
+        "name": "Repeatly – YouTube Repeat, Speed & Save",
         "operatingSystem": "Chrome, Windows, macOS, Linux",
         "applicationCategory": "BrowserApplication",
         "offers": {
@@ -47,8 +56,48 @@
           "price": "0",
           "priceCurrency": "USD"
         },
-        "description": "Loop any part of a YouTube video with AB repeat. Chain multiple segments to play in sequence. Perfect for music practice, language learning, and focused study.",
+        "description": "Loop any part of a YouTube video, control playback speed from 0.5x to 2x, and save your favorite moments to a personal library. Free Chrome extension for music, language learning, and focused study.",
         "url": "https://chromewebstore.google.com/detail/repeatly-loop-chain-youtu/mkpbpfhechamkebkgpdcfnkhfghdhgea"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I loop a part of a YouTube video?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Install Repeatly, open any YouTube video, click the repeat button next to the volume control, then set a start and end time by dragging the timeline or typing exact timestamps. Hit Start Loop and that section repeats automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I change YouTube playback speed with Repeatly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Repeatly adds one-click speed presets from 0.5x to 2x directly in its panel, so you don't need to dig through YouTube's settings menu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I save a YouTube loop to come back to later?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Tap the save button on any loop to add it to your personal 'My Loops' library. You can reopen a saved loop anytime, even if it's on a different video, and Repeatly will jump straight to that moment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Repeatly free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Repeatly is completely free with no sign-up, no account, and no ads."
+            }
+          }
+        ]
       }
     </script>
 
@@ -111,7 +160,7 @@
         margin-bottom: 24px;
       }
       .hero h1 {
-        font-size: 56px; font-weight: 800;
+        font-size: 54px; font-weight: 800;
         line-height: 1.1; letter-spacing: -2px;
         color: #fff;
         margin-bottom: 20px;
@@ -119,7 +168,7 @@
       .hero h1 span { color: #ff6b6b; }
       .hero-sub {
         font-size: 20px; color: rgba(255, 255, 255, 0.6);
-        max-width: 640px; margin: 0 auto 36px;
+        max-width: 660px; margin: 0 auto 36px;
         line-height: 1.5;
       }
       .cta-primary {
@@ -194,6 +243,17 @@
         font-size: 14px;
         line-height: 1.5;
       }
+      .feature-card .new-tag {
+        display: inline-block;
+        background: rgba(255, 107, 107, 0.15);
+        color: #ff8888;
+        font-size: 10px; font-weight: 700;
+        letter-spacing: 0.06em; text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
 
       /* ── DEMO SECTION ── */
       .demo { padding: 80px 0; background: rgba(255, 107, 107, 0.02); }
@@ -243,6 +303,18 @@
       .usecase h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
       .usecase p { color: rgba(255, 255, 255, 0.5); font-size: 13px; line-height: 1.5; }
 
+      /* ── FAQ ── */
+      .faq { padding: 80px 0; background: rgba(255, 107, 107, 0.02); }
+      .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+      .faq-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        padding: 20px 24px;
+      }
+      .faq-item h3 { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+      .faq-item p { color: rgba(255, 255, 255, 0.55); font-size: 14px; line-height: 1.6; }
+
       /* ── FINAL CTA ── */
       .final-cta {
         padding: 100px 0;
@@ -279,10 +351,10 @@
       /* ── RESPONSIVE ── */
       @media (max-width: 640px) {
         .hero { padding: 60px 0 40px; }
-        .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+        .hero h1 { font-size: 36px; letter-spacing: -1.2px; }
         .hero-sub { font-size: 17px; }
-        .section-title { font-size: 30px; }
-        .final-cta h2 { font-size: 32px; }
+        .section-title { font-size: 28px; }
+        .final-cta h2 { font-size: 30px; }
         .cta-primary { padding: 14px 24px; font-size: 15px; }
       }
     </style>
@@ -311,10 +383,10 @@
       <div class="glow glow-2"></div>
       <div class="container">
         <span class="hero-badge">Free Chrome Extension</span>
-        <h1>Loop any part of a<br /><span>YouTube video.</span></h1>
+        <h1>Loop, speed-control & save<br /><span>your favorite YouTube moments.</span></h1>
         <p class="hero-sub">
-          Set custom start and end times. Chain multiple segments to play in sequence.
-          Perfect for music practice, language learning, and focused study.
+          Set custom start and end times. Control playback speed from 0.5× to 2×.
+          Save your favorite loops to a personal library and jump back anytime.
         </p>
         <a
           class="cta-primary"
@@ -331,7 +403,7 @@
     <!-- FEATURES -->
     <section class="features">
       <div class="container">
-        <h2 class="section-title">Built for people who <span>learn from YouTube.</span></h2>
+        <h2 class="section-title">Built for people who <span>live inside YouTube.</span></h2>
         <p class="section-sub">
           Everything you need to focus on the parts that actually matter.
         </p>
@@ -346,19 +418,19 @@
             </p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">🔗</div>
-            <h3>Multi-segment chains</h3>
+            <div class="feature-icon">⚡</div>
+            <h3>One-click speed control</h3>
             <p>
-              Add multiple segments — Repeatly plays them back-to-back in the order
-              you set. The only extension in the store that does this.
+              Six presets from 0.5× to 2×, always visible — no digging through
+              YouTube's buried settings menu.
             </p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Speed control</h3>
+            <div class="feature-icon">🔖</div>
+            <h3>Save & revisit loops <span class="new-tag">New</span></h3>
             <p>
-              Slow down to 0.5× for tricky guitar riffs and foreign phrases, or
-              speed up to 2× to review faster.
+              Save any loop to your personal library. Reopen it anytime, even on a
+              different video — Repeatly jumps straight to that moment.
             </p>
           </div>
           <div class="feature-card">
@@ -381,8 +453,8 @@
             <div class="feature-icon">🔒</div>
             <h3>Privacy-first</h3>
             <p>
-              No sign-up, no ads, no personal tracking. Anonymous usage stats only,
-              opt-out any time.
+              No sign-up, no ads, no personal tracking. Your saved loops stay on
+              your device — never sent anywhere.
             </p>
           </div>
         </div>
@@ -411,9 +483,10 @@
             </div>
             <div class="step">
               <div class="step-num">3</div>
-              <h4>Set your loop &amp; go</h4>
+              <h4>Loop, speed up & save</h4>
               <p>
-                Drag the timeline, snap to playhead, or add multiple segments. Hit Start Loop.
+                Drag the timeline, pick a speed, hit Start Loop — then tap save to
+                keep it for later.
               </p>
             </div>
           </div>
@@ -424,22 +497,22 @@
     <!-- USE CASES -->
     <section class="usecases">
       <div class="container">
-        <h2 class="section-title">Perfect for <span>everyone who uses YouTube to learn.</span></h2>
-        <p class="section-sub">Repeatly is designed for focused, deliberate practice.</p>
+        <h2 class="section-title">Perfect for <span>however you use YouTube.</span></h2>
+        <p class="section-sub">From deliberate practice to replaying your favorite song, on repeat.</p>
 
         <div class="usecase-grid">
           <div class="usecase">
             <div class="usecase-icon">🎵</div>
             <div>
-              <h4>Musicians</h4>
-              <p>Loop a guitar riff, a piano section, or a vocal phrase until you nail it.</p>
+              <h4>Music & fan content</h4>
+              <p>Loop your favorite song section, save it, and replay it anytime without searching again.</p>
             </div>
           </div>
           <div class="usecase">
             <div class="usecase-icon">📚</div>
             <div>
               <h4>Language learners</h4>
-              <p>Drill pronunciation, chain multiple phrases from the same video, shadow along.</p>
+              <p>Slow a phrase down to 0.75×, loop it until pronunciation sticks, shadow along.</p>
             </div>
           </div>
           <div class="usecase">
@@ -469,6 +542,45 @@
               <h4>Focus &amp; meditation</h4>
               <p>Loop your favorite calm section for as long as you need it.</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="section-title">Frequently asked <span>questions</span></h2>
+        <p class="section-sub">Quick answers before you install.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>How do I loop a part of a YouTube video?</h3>
+            <p>
+              Install Repeatly, open any YouTube video, click the repeat button next
+              to the volume control, then set a start and end time by dragging the
+              timeline or typing exact timestamps. Hit Start Loop and that section
+              repeats automatically.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I change YouTube playback speed with Repeatly?</h3>
+            <p>
+              Yes. Repeatly adds one-click speed presets from 0.5× to 2× directly in
+              its panel, so you don't need to dig through YouTube's settings menu.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I save a YouTube loop to come back to later?</h3>
+            <p>
+              Yes. Tap the save button on any loop to add it to your personal
+              "My Loops" library. You can reopen a saved loop anytime, even if it's
+              on a different video, and Repeatly will jump straight to that moment.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Is Repeatly free?</h3>
+            <p>Yes, Repeatly is completely free with no sign-up, no account, and no ads.</p>
           </div>
         </div>
       </div>
